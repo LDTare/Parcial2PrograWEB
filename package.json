@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/LTDAre/Parcial2PrograWEB#readme",
   "dependencies": {
+    "bootstrap": "^5.1.1",
     "bulma": "^0.9.3"
   }
 }

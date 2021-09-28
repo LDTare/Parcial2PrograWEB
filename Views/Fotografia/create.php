@@ -15,7 +15,7 @@
     <div id="emailHelp" class="form-text">Aquí usted puede subir la fotografia que usted desee.</div>
   </div>
   <div class="mb-3">
-    <select class="form-select" aria-label="Default select example">
+    <select name="estado" class="form-select" aria-label="Default select example">
       <option value="0" selected>Estado:</option>
       <option value="1">Activo</option>
       <option value="2">En proceso</option>
@@ -26,7 +26,7 @@
       <select name="album" class="form-select" aria-label="Default select example">
         <option value="0" selected>Escoga el album</option>
         <?php foreach($album as $al){ ?>
-        <option value="<?php echo $al -> IdAlbum; ?>">One</option>
+        <option value="<?php echo $al -> IdAlbum; ?>"><?php echo $al -> Nombre; ?></option>
         <?php } ?>
       </select>
     </div>

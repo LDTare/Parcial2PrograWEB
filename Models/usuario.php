@@ -89,7 +89,7 @@
         {
             $conectionDB=DB::createInstant();
             $sql = $conectionDB->prepare("UPDATE usuario SET Nombre = ?, Apellido = ?, Email = ?, NameUser = ?, Pasword = ?, Rol = ? ,Estado = ? WHERE IdUser = ?");
-            $sql->execute(array($name, $lastname, $email, $user ,$pas, $estado, $id));
+            $sql->execute(array($name, $lastname, $email, $user ,$pas, $rol ,$estado, $id));
         }
     }
 

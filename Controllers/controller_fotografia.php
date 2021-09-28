@@ -15,8 +15,30 @@
 
         public function Create()
         {
-            $foto = Fotografia::consult();
             $album = Album::consult();
+            $imgData = '';
+            $imageProperties = '';
+            if($_POST)
+            {
+                if(is_uploaded_file($_FILES['archivoF']['tmp_name']))
+                {
+                    $imgData = addslashes(file_get_contents($_FILES['archivoF']['tmp_name']));
+                    $imageProperties = getimageSize($_FILES['archivoF']['tmp_name']);
+                }
+                $name = $_POST['nombre'];
+                $fecha = $_POST['fecha'];
+                $sta = $_POST['estado'];
+                $al = $_POST['album'];
+                Fotografia::create(
+                    $name,
+                    $fecha,
+                    $imgData,
+                    $sta,
+                    $al,
+                    $imageProperties['mime']
+                );
+                header("Location: ./index.php?controller=fotografia&action=home");
+            }
             include_once("./Views/Fotografia/create.php");
         }
 
@@ -25,12 +47,38 @@
             $id = $_GET['id'];
             $foto = Fotografia::search($id);
             $album = Album::consult();
+            $imgData = $foto['Fotografia'];
+            $imageProperties = $foto['DataType'];
+            if($_POST)
+            {
+                if(is_uploaded_file($_FILES['archivoF']['tmp_name']))
+                {
+                    $imgData = addslashes(file_get_contents($_FILES['archivoF']['tmp_name']));
+                    $imageProperties = getimageSize($_FILES['archivoF']['tmp_name']);
+                }
+                $name = $_POST['nombre'];
+                $fecha = $_POST['fecha'];
+                $sta = $_POST['estado'];
+                $al = $_POST['album'];
+                Fotografia::edit(
+                    $id,
+                    $name,
+                    $fecha,
+                    $imgData,
+                    $sta,
+                    $al,
+                    $imageProperties['mime']
+                );
+                header("Location: ./index.php?controller=fotografia&action=home");
+            }
+            include_once("./Views/Fotografia/edit.php");
         }
 
         public function Delete()
         {
             $id = $_GET['id'];
-            $album = Fotografia::delete($id);
+            Fotografia::delete($id);
+            include_once("./Views/Fotografia/create.php");
         }
 
         public function ImageView()

@@ -14,18 +14,26 @@
 
         public function Create()
         {
+            $user = Usuario::consult();
             if($_POST)
             {
-                $user = (int)$_POST['user'];
+                $usuario = (int)$_POST['user'];
                 $n = $_POST['name'];
                 $fecha = $_POST['fecha'];
-                $sta = $_POST['estado'];
+                $sta = (int)$_POST['estado'];
                 if($user == 0)
                 {
-                    $user = 'null';
+                    $usuario = 'null';
                 }
+                Album::create(
+                    $usuario, 
+                    $n, 
+                    $fecha,
+                    $sta
+                );
+                header("Location: ./index.php?controller=album&action=home");
             }
-            $user = Usuario::consult();
+            
             include_once("./Views/Album/create.php");
         }
 
@@ -34,6 +42,25 @@
             $id = $_GET['id'];
             $user = Usuario::consult();
             $album = Album::search($id);
+            if($_POST)
+            {
+                $usuario = (int)$_POST['user'];
+                $n = $_POST['name'];
+                $fecha = $_POST['fecha'];
+                $sta = (int)$_POST['estado'];
+                if($user == 0)
+                {
+                    $usuario = 'null';
+                }
+                Album::edit(
+                    $id,
+                    $usuario,
+                    $n,
+                    $fecha,
+                    $sta
+                );
+                header("Location: ./index.php?controller=album&action=home");
+            }
         }
 
         public function Delete()

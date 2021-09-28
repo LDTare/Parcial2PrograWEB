@@ -1,4 +1,4 @@
-<h3 class="title mb-6">Registros sobre las Usuarios.</h3>
+<h3 class="title mb-6">Registros sobre los Usuarios.</h3>
 <a class="btn btn-primary" href="?controller=usuario&action=create"> Create </a>
 <table class="table" width="100%">
   <thead>

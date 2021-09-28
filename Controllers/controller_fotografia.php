@@ -20,15 +20,23 @@
             $imageProperties = '';
             if($_POST)
             {
-                if(is_uploaded_file($_FILES['archivoF']['tmp_name']))
+                if(count($_FILES) > 0)
                 {
-                    $imgData = addslashes(file_get_contents($_FILES['archivoF']['tmp_name']));
-                    $imageProperties = getimageSize($_FILES['archivoF']['tmp_name']);
+                    if(is_uploaded_file($_FILES['archivoF']['tmp_name']))
+                    {
+                        $imgData = addslashes(file_get_contents($_FILES['archivoF']['tmp_name']));
+                        $imageProperties = getimageSize($_FILES['archivoF']['tmp_name']);
+                    }
                 }
+                
                 $name = $_POST['nombre'];
                 $fecha = $_POST['fecha'];
                 $sta = $_POST['estado'];
                 $al = $_POST['album'];
+                if($al == '0')
+                {
+
+                }
                 Fotografia::create(
                     $name,
                     $fecha,
@@ -86,7 +94,7 @@
             $id = $_GET['id'];
             $foto = Fotografia::search($id);
             header("Content-type: ". $foto['DataType']);
-            echo $foto['Fotografia'];
+            return $foto['Fotografia'];
         }
     }
 ?>

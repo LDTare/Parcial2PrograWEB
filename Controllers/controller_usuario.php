@@ -87,12 +87,14 @@
                 $email, $message);
                 header("Location: ./index.php?controller=usuario&action=home");
             }
+            include_once("./Views/Usuarios/edit.php");
         }
 
         public function Delete()
         {
             $id = $_GET['id'];
             $user = Usuario::delete($id);
+            header("Location: ./index.php?controller=usuario&action=home");
         }
     }
 

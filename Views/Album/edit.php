@@ -17,8 +17,8 @@
     <input value="<?php echo $album -> Fecha; ?>" name="fecha" type="date" class="form-control" id="dateInput">
   </div>
   <div class="mb-3">
-    <select class="form-select" aria-label="Default select example">
-      <option value="0" selected>Estado: Anterior... <?php echo $album -> IEstado; ?> </option>
+    <select class="form-select" name="estado" aria-label="Default select example">
+      <option value="0" selected>Estado: Anterior... <?php echo $album -> Estado; ?> </option>
       <option value="1">Activo</option>
       <option value="2">Inactivo</option>
       <option value="3">Eliminado</option>

@@ -17,15 +17,15 @@
     <tr>
       <th scope="row"><?php echo $f -> IdFoto; ?></th>
       <td><?php echo $f -> IdAlbum; ?><td>
-      <td><?php echo $f -> Nombre; ?></td>
+      <td><?php echo $f -> Name; ?></td>
       <td><?php echo $f -> Fecha; ?></td>
       <td><img src="?controller=fotografia&action=imageView&id=<?php echo $a -> IdAlbum; ?>" /></td>
       <td><?php echo $f -> Estado; ?></td>
       <td>
-        <a class="btn btn-warning" href="?controller=fotografia&action=edit&id=<?php echo $a -> IdAlbum; ?>">
+        <a class="btn btn-warning" href="?controller=fotografia&action=edit&id=<?php echo $f -> IdFoto; ?>">
         Editar
         </a>
-        <a class="btn btn-danger" href="?controller=fotografia&action=delete&id=<?php echo $a -> IdAlbum; ?>">
+        <a class="btn btn-danger" href="?controller=fotografia&action=delete&id=<?php echo $f -> IdFoto; ?>">
         Eliminar
         </a> 
       </td>

@@ -17,13 +17,13 @@
             $user = Usuario::consult();
             if($_POST)
             {
-                $usuario = (int)$_POST['user'];
+                $usuario = $_POST['user'];
                 $n = $_POST['name'];
                 $fecha = $_POST['fecha'];
-                $sta = (int)$_POST['estado'];
-                if($user == 0)
+                $sta = $_POST['estado'];
+                if($usuario == "0")
                 {
-                    $usuario = 'null';
+                    $usuario = null;
                 }
                 Album::create(
                     $usuario, 
@@ -44,13 +44,13 @@
             $album = Album::search($id);
             if($_POST)
             {
-                $usuario = (int)$_POST['user'];
+                $usuario = $_POST['user'];
                 $n = $_POST['name'];
                 $fecha = $_POST['fecha'];
-                $sta = (int)$_POST['estado'];
-                if($user == 0)
+                $sta = $_POST['estado'];
+                if($usuario == "0")
                 {
-                    $usuario = 'null';
+                    $usuario = null;
                 }
                 Album::edit(
                     $id,
@@ -61,6 +61,7 @@
                 );
                 header("Location: ./index.php?controller=album&action=home");
             }
+            include_once("./Views/Album/edit.php");
         }
 
         public function Delete()

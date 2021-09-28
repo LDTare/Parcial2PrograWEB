@@ -36,10 +36,10 @@
         {
             $listU = [];
             $conectionDB=DB::createInstant();
-            $sql=$conectionDB->query("SELECT * FROM fotografia");
+            $sql=$conectionDB->query("SELECT * FROM usuario");
             foreach($sql->fetchAll() as $User)
             {
-                $listU []= new Fotografia(
+                $listU []= new Usuario(
                     $User['IdUser'],
                     $User['Nombre'],
                     $User['Apellido'],

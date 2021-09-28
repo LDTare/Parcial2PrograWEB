@@ -51,7 +51,7 @@
         public static function create($nombre, $fecha, $fotografia, $estado, $idalbum, $datafot)
         {
             $conectionDB=DB::createInstant();
-            $sql = $conectionDB->prepare("INSERT INTO fotografia(Nombre, Fecha, Fotografia, Estado, IdAlbum, DataTyp) VALUES (?,?,?,?,?,?)");
+            $sql = $conectionDB->prepare("INSERT INTO fotografia(Nombre, Fecha, Fotografia, Estado, IdAlbum, DataType) VALUES (?,?,?,?,?,?)");
             $sql->execute(array($nombre, $fecha, $fotografia, $estado, $idalbum, $datafot));
         }
 

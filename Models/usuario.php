@@ -8,6 +8,7 @@
         public $email;
         public $user;
         public $pass;
+        public $rol;
         public $estado;
 
         public function __construct(
@@ -17,6 +18,7 @@
             $email,
             $user,
             $pass,
+            $rol,
             $estado
         )
         {
@@ -26,6 +28,7 @@
             $this -> Email = $email;
             $this -> Usuario = $user;
             $this -> Password = $pass;
+            $this -> Rol = $rol;
             $this -> Estado = $estado;
         }
 
@@ -43,17 +46,18 @@
                     $User['Email'],
                     $User['NameUser'],
                     $User['Pasword'],
+                    $User['Rol'],
                     $User['Estado']
                 ); 
             }
             return $listU;
         }
 
-        public static function create($name, $lastname, $email, $user, $pas, $estado)
+        public static function create($name, $lastname, $email, $user, $pas,$rol ,$estado)
         {
             $conectionDB=DB::createInstant();
-            $sql = $conectionDB->prepare("INSERT INTO usuario(Nombre, Apellido, Email, NameUser, Pasword, Estado) VALUES (?,?,?,?,?,?)");
-            $sql->execute(array($name, $lastname, $email, $user ,$pas, $estado));
+            $sql = $conectionDB->prepare("INSERT INTO usuario(Nombre, Apellido, Email, NameUser, Pasword,Rol ,Estado) VALUES (?,?,?,?,?,?,?)");
+            $sql->execute(array($name, $lastname, $email, $user ,$pas,$rol ,$estado));
         }
 
         public static function delete($id)
@@ -76,14 +80,15 @@
                 $user['Email'],
                 $user['NameUser'],
                 $user['Pasword'],
+                $user['Rol'],
                 $user['Estado']
             );
         }
 
-        public static function edit($id,$name, $lastname, $email, $user, $pas, $estado )
+        public static function edit($id,$name, $lastname, $email, $user, $pas, $rol ,$estado )
         {
             $conectionDB=DB::createInstant();
-            $sql = $conectionDB->prepare("UPDATE usuario SET Nombre = ?, Apellido = ?, Email = ?, NameUser = ?, Pasword = ?, Estado = ? WHERE IdUser = ?");
+            $sql = $conectionDB->prepare("UPDATE usuario SET Nombre = ?, Apellido = ?, Email = ?, NameUser = ?, Pasword = ?, Rol = ? ,Estado = ? WHERE IdUser = ?");
             $sql->execute(array($name, $lastname, $email, $user ,$pas, $estado, $id));
         }
     }

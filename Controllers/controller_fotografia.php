@@ -9,7 +9,7 @@
     {
         public function Home()
         {
-            $album = Fotografia::consult();
+            $foto = Fotografia::consult();
             include_once("./Views/Fotografia/home.php");
         }
 
@@ -23,13 +23,22 @@
         public function Edit()
         {
             $id = $_GET['id'];
-            $album = Fotografia::search($id);
+            $foto = Fotografia::search($id);
+            $album = Album::consult();
         }
 
         public function Delete()
         {
             $id = $_GET['id'];
             $album = Fotografia::delete($id);
+        }
+
+        public function ImageView()
+        {
+            $id = $_GET['id'];
+            $foto = Fotografia::search($id);
+            header("Content-type: ". $foto['DataType']);
+            echo $foto['Fotografia'];
         }
     }
 ?>

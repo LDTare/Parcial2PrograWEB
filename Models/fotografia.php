@@ -8,13 +8,15 @@
         public $fotografia;
         public $estado;
         public $idalbum;
+        public $dataf;
         public function __construct(
             $id,
             $name, 
             $fecha,
             $fotografia,
             $estado,
-            $idalbum
+            $idalbum,
+            $dataf
         )
         {
             $this -> IdFoto = $id;
@@ -23,6 +25,7 @@
             $this -> Foto = $fotografia;
             $this -> Estado = $estado;
             $this -> IdAlbum = $idalbum;
+            $this -> DataFoto = $dataf;
         }
 
         public static function consult()
@@ -38,17 +41,18 @@
                     $fto['Fecha'],
                     $fto['Fotografia'],
                     $fto['Estado'],
-                    $fto['IdAlbum']
+                    $fto['IdAlbum'],
+                    $fto['DataType']
                 ); 
             }
             return $listFto;
         }
 
-        public static function create($nombre, $fecha, $fotografia, $estado, $idalbum)
+        public static function create($nombre, $fecha, $fotografia, $estado, $idalbum, $datafot)
         {
             $conectionDB=DB::createInstant();
-            $sql = $conectionDB->prepare("INSERT INTO fotografia(Nombre, Fecha, Fotografia, Estado, IdAlbum) VALUES (?,?,?,?,?)");
-            $sql->execute(array($nombre, $fecha, $fotografia, $estado, $idalbum));
+            $sql = $conectionDB->prepare("INSERT INTO fotografia(Nombre, Fecha, Fotografia, Estado, IdAlbum, DataTyp) VALUES (?,?,?,?,?,?)");
+            $sql->execute(array($nombre, $fecha, $fotografia, $estado, $idalbum, $datafot));
         }
 
         public static function delete($id)
@@ -69,15 +73,16 @@
                 $foto['Fecha'],
                 $foto['Fotografia'],
                 $foto['Estado'],
-                $foto['IdAlbum']
+                $foto['IdAlbum'],
+                $foto['DataType']
             );
         }
 
-        public static function edit($id, $nombre, $fecha, $fotografia, $estado, $idalbum)
+        public static function edit($id, $nombre, $fecha, $fotografia, $estado, $datafoto ,$idalbum)
         {
             $conectionDB=DB::createInstant();
-            $sql = $conectionDB->prepare("UPDATE `fotografia` SET Nombre=? , Fecha=?, Fotografia=?,Estado=?,IdAlbum=? WHERE IdFotografia = ?");
-            $sql->execute(array($nombre, $fecha, $fotografia, $estado, $idalbum, $id));
+            $sql = $conectionDB->prepare("UPDATE `fotografia` SET Nombre=? , Fecha=?, Fotografia=?,Estado=?,IdAlbum=?, DataType = ? WHERE IdFotografia = ?");
+            $sql->execute(array($nombre, $fecha, $fotografia, $estado, $idalbum,$datafoto,$id));
         }
     }
 ?>

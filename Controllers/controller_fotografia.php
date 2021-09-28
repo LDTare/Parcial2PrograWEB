@@ -15,6 +15,7 @@
 
         public function Create()
         {
+            $foto = Fotografia::consult();
             $album = Album::consult();
             include_once("./Views/Fotografia/create.php");
         }

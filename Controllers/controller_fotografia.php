@@ -59,10 +59,13 @@
             $imageProperties = $foto['DataType'];
             if($_POST)
             {
-                if(is_uploaded_file($_FILES['archivoF']['tmp_name']))
+                if(count($_FILES) > 0)
                 {
-                    $imgData = addslashes(file_get_contents($_FILES['archivoF']['tmp_name']));
-                    $imageProperties = getimageSize($_FILES['archivoF']['tmp_name']);
+                    if(is_uploaded_file($_FILES['archivoF']['tmp_name']))
+                    {
+                        $imgData = addslashes(file_get_contents($_FILES['archivoF']['tmp_name']));
+                        $imageProperties = getimageSize($_FILES['archivoF']['tmp_name']);
+                    }
                 }
                 $name = $_POST['nombre'];
                 $fecha = $_POST['fecha'];

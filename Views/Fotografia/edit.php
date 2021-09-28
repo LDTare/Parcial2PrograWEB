@@ -1,4 +1,4 @@
-<form method="post" action="">
+<form method="post" action="" enctype="multipart/form-data">
   <div class="mb-3">
     <label for="input1" class="form-label">Nombre: </label>
     <input type="text" value = "<?php echo $foto -> IdAlbum ?>" name="nombre" class="form-control" id="input1" aria-describedby="InputHelp">

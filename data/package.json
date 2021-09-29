@@ -1,0 +1,24 @@
+{
+  "name": "Parcial2PrograWEB",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LTDAre/Parcial2PrograWEB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LTDAre/Parcial2PrograWEB/issues"
+  },
+  "homepage": "https://github.com/LTDAre/Parcial2PrograWEB#readme",
+  "dependencies": {
+    "bootstrap": "^5.1.1",
+    "bulma": "^0.9.3"
+  }
+}

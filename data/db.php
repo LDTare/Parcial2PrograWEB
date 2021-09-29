@@ -12,4 +12,11 @@
             return self::$instant;
         }
     }
+
+    $conn = mysqli_connect(
+        'localhost',
+        'root',
+        '',
+        'parcial_prograweb'
+    ) or die(mysqli_error($conn));
 ?>

@@ -1,28 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<?php
+//Seguridad de paginacion
+session_start();
+error_reporting(0);
 
-    <!-- Bootstrap CSS -->
-    <!-- https://cdnjs.com/libraries/twitter-bootstrap/5.0.0-beta1 -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css"
-    />
+$activesesion = $_SESSION['nameuser'];
+if($activesesion == null || $activesesion == '')
+{
+    header("location: ../index.php");
+    die();  
+}
+?>
 
-    <!-- Icons: https://getbootstrap.com/docs/5.0/extend/icons/ -->
-    <!-- https://cdnjs.com/libraries/font-awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-    />
-
-    <title>Login</title>
-  </head>
-  <body>
-      
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
-  </body>
-</html>
+<li class="nav-item">
+        <a href="../closesesion.php" class="nav-link">
+          <i class="zmdi zmdi-close"></i> Cerrar Sesion
+        </a>
+</li>

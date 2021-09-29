@@ -19,7 +19,7 @@
 </head>
 <body>
     <!------ Login Form  ---------->
-<section class="vh-100 gradient-custom">
+<form class="vh-100 gradient-custom" action="validate.php" method="post">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -34,13 +34,13 @@
 
               <!------ Usuario Field ---------->
               <div class="form-outline form-white mb-4">
-                <input type="email" id="typeEmailX" class="form-control form-control-lg" />
+                <input type="text" name="nameuser" id="typeEmailX" class="form-control form-control-lg" />
                 <label class="form-label" for="typeEmailX">Usuario</label>
               </div>
 
               <!------ Password Field ---------->
               <div class="form-outline form-white mb-4">
-                <input type="password" id="typePasswordX" class="form-control form-control-lg" />
+                <input type="password" name="password" id="typePasswordX" class="form-control form-control-lg" />
                 <label class="form-label" for="typePasswordX">Contraseña</label>
               </div>
 
@@ -64,7 +64,7 @@
       </div>
     </div>
   </div>
-</section>
+</form>
 </body>
 
 <!-- MDB -->

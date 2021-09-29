@@ -1,13 +1,28 @@
 <?php
-    $control = 'pages';
-    $action = 'home';
-    if(isset($_GET['controller']) && isset($_GET['action']))
+    //Seguridad de paginacion
+    session_start();
+    error_reporting(0);
+
+    $activesesion = $_SESSION['nameuser'];
+    if($activesesion == null || $activesesion == '')
     {
-        if(($_GET['controller']!='')&&($_GET['action']!=''))
-        {
-            $control = $_GET['controller'];
-            $action = $_GET['action'];
-        }
+        header("location: ../index.php");
+        die();  
     }
-    require_once("Views/template.php"); 
+    else
+    {
+        $control = 'pages';
+        $action = 'home';
+        if(isset($_GET['controller']) && isset($_GET['action']))
+        {
+            if(($_GET['controller']!='')&&($_GET['action']!=''))
+            {
+                $control = $_GET['controller'];
+                $action = $_GET['action'];
+            }
+        }
+        require_once("Views/template.php"); 
+    }
+
+    
 ?>

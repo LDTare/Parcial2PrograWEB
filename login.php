@@ -15,7 +15,7 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet"/>
 
-    <title>Pacial 2</title>
+    <title>Parcial 2</title>
 </head>
 <body>
     <!------ Login Form  ---------->
@@ -56,7 +56,7 @@
             </div>
 
             <div>
-              <p class="mb-0">No posee un usuario <a href="#!" class="text-white-50 fw-bold">Crear Usuario</a></p>
+              <p class="mb-0">No posee un usuario <a href="?controller=usuario&action=create&id=1" class="text-white-50 fw-bold">Crear Usuario</a></p>
             </div>
 
           </div>

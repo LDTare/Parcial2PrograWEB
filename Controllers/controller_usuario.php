@@ -13,6 +13,11 @@
 
         public function Create()
         {
+            $idLog = '';
+            if(isset($_GET['id']))
+            {
+                $idLog = $_GET['id'];
+            }
             if($_POST)
             {
                 $name = $_POST['name'];
@@ -22,7 +27,16 @@
                 $p1 = $_POST['passw1'];
                 $p2 = $_POST['passw2'];
                 $estado = $_POST['estado'];
-                $rol = $_POST['rol'];
+                $rol = '';
+                if($idLog == '1' || $idLog == 1)
+                {
+                    $rol = 'User';
+                }
+                else if($idLog == '')
+                {
+                    $rol = $_POST['rol'];
+                }
+                
                 if($p1 == $p2)
                 {
                     

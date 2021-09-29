@@ -13,6 +13,6 @@ if($activesesion == null || $activesesion == '')
 
 <li class="nav-item">
         <a href="../closesesion.php" class="nav-link">
-          <i class="zmdi zmdi-close"></i> Cerrar Sesion
+          <i class="zmdi zmdi-close"> <?php echo $activesesion; ?></i> Cerrar Sesion
         </a>
 </li>

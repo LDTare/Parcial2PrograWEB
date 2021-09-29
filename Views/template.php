@@ -1,3 +1,16 @@
+<?php
+  include_once("./Models/album.php");
+  session_start();
+  error_reporting(0);
+    if($activesesion == null || $activesesion == '')
+    {
+        header("location: ../index.php");
+        die();  
+    }
+    $rol = $_SESSION['Rol'];
+    $idUser = $_SESSION['idUser'];
+    $albums = Album::consult();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31,20 +44,35 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+              <a class="nav-link active" aria-current="page" href="?controller=pages&action=home">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Perfil</a>
+              <a class="nav-link" href="?controller=usuario&action=perfil">Perfil</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Albumes
-              </a>
+              <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Album 1</a></li>
-                <li><a class="dropdown-item" href="#">Album 2</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Agregar un Album</a></li>
+              <?php if($rol == 'Admin')
+                    {
+                      echo `
+                      <li><a class="dropdown-item" href="?controller=usuario&action=home">Perfiles</a></li>
+                      <li><a class="dropdown-item" href="?controller=album&action=home">Albumes</a></li>
+                      <li><a class="dropdown-item" href="?controller=fotografia&action=home">Fotografias</a></li>
+                      `;
+                    } 
+                    else if($rol == 'User')
+                    {
+                      foreach($albums as $alb)
+                      {
+                        if($alb -> IdUser == $idUser)
+                        {
+                          echo '<li><a class="dropdown-item" href="?controller=album&action=galery&id='. $alb -> IdAlbum .'">Album '. $alb -> Nombre.'</a></li>';
+                        }
+                      }
+                      echo '<li><a class="dropdown-item" href="?controller=fotografia&action=createid='. $alb -> IdAlbum .'">Agregar un Album</a></li>';
+                    }
+              ?>
+              </a>
               </ul>
             </li>
           </ul>

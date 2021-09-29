@@ -84,5 +84,26 @@
             $sql = $conectionDB->prepare("UPDATE `fotografia` SET Nombre=? , Fecha=?, Fotografia=?,Estado=?,IdAlbum=?, DataType = ? WHERE IdFotografia = ?");
             $sql->execute(array($nombre, $fecha, $fotografia, $estado, $idalbum,$datafoto,$id));
         }
+
+        public static function galery($idalbum)
+        {
+            $listFto = [];
+            $conectionDB=DB::createInstant();
+            $sql=$conectionDB->query("SELECT * FROM fotografia WHERE IdFotografia = ?");
+            $sql->execute(array($idalbum));
+            foreach($sql->fetchAll() as $fto)
+            {
+                $listFto []= new Fotografia(
+                    $fto['IdFotografia'],
+                    $fto['Nombre'],
+                    $fto['Fecha'],
+                    $fto['Fotografia'],
+                    $fto['Estado'],
+                    $fto['IdAlbum'],
+                    $fto['DataType']
+                ); 
+            }
+            return $listFto;
+        }
     }
 ?>

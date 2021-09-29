@@ -20,30 +20,34 @@
             $imageProperties = '';
             if($_POST)
             {
-                if(count($_FILES) > 0)
+                $tipoArchivo = '';
+                $nombreArchivo = '';
+                $tamanoArchivo = '';
+                $imagenSubida = '';
+                $binariosImagen = '';
+                if(isset($_FILES['archivoF']['name']))
                 {
-                    if(is_uploaded_file($_FILES['archivoF']['tmp_name']))
-                    {
-                        $imgData = addslashes(file_get_contents($_FILES['archivoF']['tmp_name']));
-                        $imageProperties = getimageSize($_FILES['archivoF']['tmp_name']);
-                    }
+                    $tipoArchivo = $_FILES['archivoF']['type'];
+                    $nombreArchivo = $_FILES['archivoF']['name'];
+                    $tamanoArchivo = $_FILES['archivoF']['size'];
+                    $imagenSubida = fopen($_FILES['archivoF']['tmp_name'], 'r');
+                    $binariosImagen = fread($imagenSubida, $tamanoArchivo);
                 }
-                
                 $name = $_POST['nombre'];
                 $fecha = $_POST['fecha'];
                 $sta = $_POST['estado'];
                 $al = $_POST['album'];
                 if($al == '0')
                 {
-
+                    $al = null;
                 }
                 Fotografia::create(
                     $name,
                     $fecha,
-                    $imgData,
+                    $binariosImagen,
                     $sta,
                     $al,
-                    $imageProperties['mime']
+                    $tipoArchivo
                 );
                 header("Location: ./index.php?controller=fotografia&action=home");
             }
@@ -71,6 +75,10 @@
                 $fecha = $_POST['fecha'];
                 $sta = $_POST['estado'];
                 $al = $_POST['album'];
+                if($al == '0')
+                {
+                    $al = null;
+                }
                 Fotografia::edit(
                     $id,
                     $name,

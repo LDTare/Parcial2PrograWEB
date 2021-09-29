@@ -19,7 +19,7 @@
       <td><?php echo $f -> IdAlbum; ?><td>
       <td><?php echo $f -> Name; ?></td>
       <td><?php echo $f -> Fecha; ?></td>
-      <td><img width="100" src="data:<?php echo $f -> DataFoto?>;base64,<?php echo base64_encode($f -> Fotografia); ?>" /></td>
+      <td><img width="100" src="data:<?php echo $f->DataFoto;?>;base64,<?php echo base64_encode($f->Foto);?>" /></td>
       <td><?php echo $f -> Estado; ?></td>
       <td>
         <a class="btn btn-warning" href="?controller=fotografia&action=edit&id=<?php echo $f -> IdFoto; ?>">

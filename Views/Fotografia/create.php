@@ -30,6 +30,6 @@
         <?php } ?>
       </select>
     </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Create</button>
   <a name="cancel" class="btn btn-warning" href="index.php?controller=fotografia&action=home">Cancelar</a>
 </form>

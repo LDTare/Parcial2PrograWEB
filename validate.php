@@ -1,12 +1,12 @@
 <?php
-include("data/db.php");
+include("db.php");
 $usuario=$_POST['nameuser'];
 $contraseña=$_POST['password'];
 session_start();
 $_SESSION['nameuser']=$usuario;
 
 
-$consulta="SELECT*FROM usuario where nameuser='$usuario' and pasword='$contraseña'";
+$consulta="SELECT * FROM usuario where nameuser='$usuario' and pasword='$contraseña'";
 $resultado=mysqli_query($conn,$consulta);
 
 $filas=mysqli_fetch_array($resultado);
